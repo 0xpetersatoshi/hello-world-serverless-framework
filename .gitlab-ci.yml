@@ -1,0 +1,24 @@
+stages:
+    - test
+    - deploy
+        
+run-unit-tests:
+    image: python:alpine3.9
+    stage: test
+    script:
+        - echo 'Running unit tests...'
+        - pip install -r requirements.txt
+        - python -m pytest tests -v
+
+deploy-to-cloud:
+    image: node:8-alpine
+    stage: deploy
+    script:
+        - echo 'Installing serverless...'
+        - npm install -g serverless
+        - echo 'Deploying...'
+        - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+        - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+        - export AWS_REGION=$AWS_REGION
+        - export S3_BUCKET=$S3_BUCKET
+        - serverless deploy -p hello_world/

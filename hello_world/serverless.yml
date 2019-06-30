@@ -1,0 +1,19 @@
+service: my-first-service
+app: my-first-app
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: ${opt:stage, 'dev'}
+  region: ${env:AWS_REGION}
+  profile: sls-user
+  memorySize: 512
+  deploymentBucket:
+    name: ${env:S3_BUCKET}
+
+functions:
+  hello:
+    name: say-hello
+    handler: handler.hello
+    environment:
+      SOME_VAR: 55
