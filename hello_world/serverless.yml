@@ -1,5 +1,5 @@
 service: my-first-service
-app: my-first-app
+# app: my-first-app
 
 provider:
   name: aws
