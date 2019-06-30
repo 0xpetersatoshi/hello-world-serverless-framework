@@ -24,4 +24,5 @@ deploy-to-cloud:
         - export AWS_REGION=$AWS_REGION
         - export S3_BUCKET=$S3_BUCKET
         - cd hello_world
+        - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
         - serverless deploy
