@@ -6,7 +6,7 @@ provider:
   runtime: python3.7
   stage: ${opt:stage, 'dev'}
   region: ${env:AWS_REGION}
-  profile: sls-user
+  # profile: sls-user
   memorySize: 512
   deploymentBucket:
     name: ${env:S3_BUCKET}
